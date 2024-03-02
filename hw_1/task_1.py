@@ -3,10 +3,18 @@
 import sys
 
 
-def process_stdin() -> None:
-    """Count all lines from stdin until EOF."""
+def process_stdin(idx: int = None) -> int:
+    """
+    Count all lines from stdin until EOF.
 
-    idx: int = 1
+    Parameters:
+        idx: index from which should start counting
+
+    Return:
+        Index on which stopped counting
+    """
+
+    idx: int = idx if idx is not None else 1
 
     try:
         while True:
@@ -15,7 +23,7 @@ def process_stdin() -> None:
             print(result)
             idx += 1
     except EOFError:
-        pass
+        return idx
 
 
 def process_file(file_names: list[str]) -> None:
@@ -26,15 +34,17 @@ def process_file(file_names: list[str]) -> None:
         file_names: file names referring to the files to process
     """
 
+    idx: int = 1
+
     for file_name in file_names:
 
         if file_name == "-":
-            process_stdin()
+            idx = process_stdin(idx)
             continue
 
         with open(file_name, "r") as file:
             lines: list[str] = file.readlines()
-            nums: list[str] = ["".join(["\t", str(x)]) for x in range(1, len(lines) + 1)]
+            nums: list[str] = ["".join(["\t", str(x)]) for x in range(idx, idx + len(lines) + 1)]
             result: list[str] = list(
                 map(
                     lambda x: " ".join([x[0], x[1]]),
@@ -42,6 +52,7 @@ def process_file(file_names: list[str]) -> None:
                 )
             )
             print("".join(result), end="")
+            idx = len(lines) + 1
 
         print()
 
@@ -61,3 +72,5 @@ if __name__ == "__main__":
             process_file(args)
         except FileNotFoundError as not_file:
             print(" ".join(["Could not open file:", not_file.filename]))
+        except KeyboardInterrupt:
+            pass

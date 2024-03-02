@@ -76,3 +76,5 @@ if __name__ == "__main__":
             process_file(args)
         except FileNotFoundError as not_file:
             print(" ".join(["Could not open file:", not_file.filename]))
+        except KeyboardInterrupt:
+            pass

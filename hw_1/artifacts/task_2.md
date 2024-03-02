@@ -25,7 +25,7 @@ copper
 ```
 
 ```commandline
-$ python3 task_2.py resources/many_lines_file task_1.py 
+$  python3 task_2.py resources/many_lines_file task_1.py 
 ==> resources/many_lines_file <==
 dynamic
 ruin
@@ -38,8 +38,6 @@ emergency
 copper
 
 ==> task_1.py <==
-        # SIGTERM handler
-        except KeyboardInterrupt:
             pass
 
     else:
@@ -47,6 +45,10 @@ copper
             process_file(args)
         except FileNotFoundError as not_file:
             print(" ".join(["Could not open file:", not_file.filename]))
+        except KeyboardInterrupt:
+            pass
+
+
 ```
 
 ```commandline

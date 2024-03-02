@@ -21,26 +21,26 @@
   
 - ```commandline
   $ wc task_1.py 
-  59  148 1386 task_1.py
+  76  197 1764 task_1.py
   ```
   
   ```commandline
   $ python3 task_3.py task_1.py 
-        59      148     1386    task_1.py
+        76      197     1764    task_1.py
   ```
   
 - ```commandline
   $ wc task_1.py task_2.py 
-  59  148 1386 task_1.py
-  74  173 1664 task_2.py
-  133  321 3050 total
+  76  197 1764 task_1.py
+  80  182 1796 task_2.py
+  156  379 3560 total
   ```
   
   ```commandline
   $ python3 task_3.py task_1.py task_2.py 
-        59      148     1386    task_1.py
-        74      173     1664    task_2.py
-        133     321     3050    total
+        76      197     1764    task_1.py
+        80      182     1796    task_2.py
+        156     379     3560    total
   ```
     
 - ```commandline
@@ -52,8 +52,6 @@
         3       4      18 -
        74     173    1664 task_2.py
       147     378    3602 total
-
-
     ```
   
   ```commandline
@@ -65,7 +63,6 @@
           3       4       18      -
           74      173     1664    task_2.py
           147     378     3602    total
-
   ```
   
 - ```commandline
