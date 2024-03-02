@@ -4,15 +4,18 @@ import sys
 
 
 def process_stdin() -> None:
-    """Count all lines from stdin until SIGTERM, SIGSTOP or EOF."""
+    """Count all lines from stdin until EOF."""
 
     idx: int = 1
 
-    while True:
-        line: str = input()
-        result: str = " ".join(["\t", str(idx), line])
-        print(result)
-        idx += 1
+    try:
+        while True:
+            line: str = input()
+            result: str = " ".join(["\t", str(idx), line])
+            print(result)
+            idx += 1
+    except EOFError:
+        pass
 
 
 def process_file(file_names: list[str]) -> None:
@@ -45,7 +48,8 @@ if __name__ == "__main__":
     if len(args) == 0:
         try:
             process_stdin()
-        except (KeyboardInterrupt, EOFError):
+        # SIGTERM handler
+        except KeyboardInterrupt:
             pass
 
     else:
@@ -53,4 +57,3 @@ if __name__ == "__main__":
             process_file(args)
         except FileNotFoundError as not_file:
             print(" ".join(["Could not open file:", not_file.filename]))
-

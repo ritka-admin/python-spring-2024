@@ -1,7 +1,7 @@
 # task_1 artifacts
 
 ```commandline
-$ python task_1.py resources/task_1/kek 
+$ python3 task_1.py resources/kek 
         1 Вам нужно реализовать CLI приложения, кроме кода, вам необходимо в качестве артефактов приложить текстовый файл, как вы проверяли работоспособность вашего кода (просто копия команд и выводов из терминала)
         2 
         3 1.1
@@ -12,7 +12,7 @@ $ python task_1.py resources/task_1/kek
 ```
 
 ```commandline
-$ python task_1.py resources/task_1/empty
+$ python3 task_1.py resources/empty
         1 
         2 
         3 
@@ -24,7 +24,7 @@ $ python task_1.py resources/task_1/empty
 ```
 
 ```commandline
-$ python task_1.py task_1.py 
+$ python3 task_1.py task_1.py 
         1 # nl -b a
         2 
         3 import sys
@@ -81,4 +81,9 @@ $ python task_1.py task_1.py
         54         except FileNotFoundError as not_file:
         55             print(" ".join(["Could not open file:", not_file.filename]))
         56 
+```
+
+```commandline
+$ python3 task_1.py non_existing_file
+Could not open file: non_existing_file
 ```

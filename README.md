@@ -2,7 +2,7 @@
 
 ### hw_1
 
-Launch: `python task_N.py [ARGS]`
+Launch: `python3 task_N.py [ARGS]`
 
 - task_1: `nl -b a` realization
 - task_2: `tail` realization
