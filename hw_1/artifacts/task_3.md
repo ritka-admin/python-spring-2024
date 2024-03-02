@@ -20,52 +20,54 @@
     ```
   
 - ```commandline
-  $ wc task_1.py 
-  76  197 1764 task_1.py
+  $ wc resources/task_1 
+  76  197 1764 resources/task_1
   ```
   
   ```commandline
-  $ python3 task_3.py task_1.py 
-        76      197     1764    task_1.py
+  $ python3 task_3.py resources/task_1 
+        76      197     1764    resources/task_1
   ```
   
 - ```commandline
-  $ wc task_1.py task_2.py 
-  76  197 1764 task_1.py
-  80  182 1796 task_2.py
-  156  379 3560 total
+  $ wc resources/many_lines_file resources/task_1 
+  15   15  109 resources/many_lines_file
+  76  197 1764 resources/task_1
+  91  212 1873 total  
   ```
   
   ```commandline
-  $ python3 task_3.py task_1.py task_2.py 
-        76      197     1764    task_1.py
-        80      182     1796    task_2.py
-        156     379     3560    total
+  $ python3 task_3.py resources/many_lines_file resources/task_1
+        15      15      109     resources/many_lines_file
+        76      197     1764    resources/task_1
+        91      212     1873    total
   ```
     
 - ```commandline
-  $ wc task_3.py - task_2.py 
-       70     201    1920 task_3.py
+  $ wc resources/task_1 - resources/empty 
+     76     197    1764 resources/task_1
   ffff
   dddd
   \n    t
-        3       4      18 -
-       74     173    1664 task_2.py
-      147     378    3602 total
+      3       4      24 -
+      8       2      14 resources/empty
+     87     203    1802 total
+
     ```
   
   ```commandline
-  $ python3 task_3.py task_3.py - task_2.py 
-          70      201     1920    task_3.py
+  $ python3 task_3.py resources/task_1 - resources/empty
+        76      197     1764    resources/task_1
   ffff
   dddd
   \n    t
-          3       4       18      -
-          74      173     1664    task_2.py
-          147     378     3602    total
+        3       4       24      -
+        8       2       14      resources/empty
+        87      203     1802    total
+
   ```
   
 - ```commandline
-  $ python3 task_3.py task_4.py
-  Could not open file: task_4.py
+  $ python3 task_3.py resources/task_4
+  Could not open file: resources/task_4
   ```

@@ -24,7 +24,7 @@ $ python3 task_1.py resources/empty
 ```
 
 ```commandline
-$ python3 task_1.py task_1.py 
+    $ python3 task_1.py resources/task_1 
         1 # nl -b a
         2 
         3 import sys
@@ -101,11 +101,10 @@ $ python3 task_1.py task_1.py
         74             print(" ".join(["Could not open file:", not_file.filename]))
         75         except KeyboardInterrupt:
         76             pass
-
 ```
 
 ```commandline
-$ python3 task_1.py resources/empty - task_2.py 
+$ python3 task_1.py resources/empty - resources/task_1
         1 
         2 
         3 
@@ -119,86 +118,82 @@ kek
          9 kek
 lol
          10 lol
-        11 # tail
+        11 # nl -b a
         12 
         13 import sys
-        14 from typing import Final
-        15 from collections import deque
-        16 
-        17 _STDIN_TAIL_SIZE: Final[int] = 17
-        18 _FILE_TAIL_SIZE: Final[int] = 10
+        14 
+        15 
+        16 def process_stdin(idx: int = None) -> int:
+        17     """
+        18     Count all lines from stdin until EOF.
         19 
-        20 
-        21 def process_stdin() -> None:
-        22     """
-        23     Read stdin and print out the last several lines after EOF is reached.
-        24 
-        25     Note:
-        26         Number of lines to output is determined by _STDIN_TAIL_SIZE.
-        27     """
+        20     Parameters:
+        21         idx: index from which should start counting
+        22 
+        23     Return:
+        24         Index on which stopped counting
+        25     """
+        26 
+        27     idx: int = idx if idx is not None else 1
         28 
-        29     deq: deque[str] = deque()
-        30 
-        31     try:
-        32         while True:
-        33             line: str = input()
-        34 
-        35             if len(deq) == _STDIN_TAIL_SIZE:
-        36                 deq.popleft()
+        29     try:
+        30         while True:
+        31             line: str = input()
+        32             result: str = " ".join(["\t", str(idx), line])
+        33             print(result)
+        34             idx += 1
+        35     except EOFError:
+        36         return idx
         37 
-        38             deq.append(line)
-        39 
-        40     except EOFError:
-        41         for elem in deq:
-        42             print(elem)
-        43 
-        44 
-        45 def process_file(file_names: list[str]) -> None:
-        46     """
-        47     Print out the last several lines of the provided files.
+        38 
+        39 def process_file(file_names: list[str]) -> None:
+        40     """
+        41     Count all lines in provided files. Empty lines are also accounted.
+        42 
+        43     Parameters:
+        44         file_names: file names referring to the files to process
+        45     """
+        46 
+        47     idx: int = 1
         48 
-        49     Note:
-        50         Number of lines to output is determined by _STDIN_TAIL_SIZE.
-        51 
-        52     Parameters:
-        53         file_names: file names referring to the files to process
-        54     """
-        55 
-        56     for file_name in file_names:
-        57 
-        58         if len(file_names) > 1:
-        59             print(" ".join(["==>", file_name, "<=="]))
-        60 
-        61         if file_name == "-":
-        62             process_stdin()
-        63             continue
-        64 
-        65         with open(file_name, "r") as file:
-        66             lines = file.readlines()
-        67 
-        68             if len(lines) < _FILE_TAIL_SIZE:
-        69                 print("".join(lines))
-        70                 continue
-        71 
-        72             print("".join(lines[len(lines)-_FILE_TAIL_SIZE+1:]))
-        73 
-        74 
-        75 if __name__ == "__main__":
-        76     args = sys.argv[1:]
-        77 
-        78     if len(args) == 0 or args[0] == "-":
-        79         try:
-        80             process_stdin()
-        81         # SIGTERM handler
-        82         except KeyboardInterrupt:
-        83             pass
-        84     else:
-        85         try:
-        86             process_file(args)
-        87         except FileNotFoundError as not_file:
-        88             print(" ".join(["Could not open file:", not_file.filename]))
-        89         except KeyboardInterrupt:
-        90             pass
+        49     for file_name in file_names:
+        50 
+        51         if file_name == "-":
+        52             idx = process_stdin(idx)
+        53             continue
+        54 
+        55         with open(file_name, "r") as file:
+        56             lines: list[str] = file.readlines()
+        57             nums: list[str] = ["".join(["\t", str(x)]) for x in range(idx, idx + len(lines) + 1)]
+        58             result: list[str] = list(
+        59                 map(
+        60                     lambda x: " ".join([x[0], x[1]]),
+        61                     zip(nums, lines)
+        62                 )
+        63             )
+        64             print("".join(result), end="")
+        65             idx = len(lines) + 1
+        66 
+        67         print()
+        68 
+        69 
+        70 if __name__ == "__main__":
+        71     args = sys.argv[1:]
+        72 
+        73     if len(args) == 0 or args[0] == "-":
+        74         try:
+        75             process_stdin()
+        76         # SIGTERM handler
+        77         except KeyboardInterrupt:
+        78             pass
+        79 
+        80     else:
+        81         try:
+        82             process_file(args)
+        83         except FileNotFoundError as not_file:
+        84             print(" ".join(["Could not open file:", not_file.filename]))
+        85         except KeyboardInterrupt:
+        86             pass
 ```
 
 ```commandline
