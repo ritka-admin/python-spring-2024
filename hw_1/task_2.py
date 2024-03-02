@@ -37,7 +37,7 @@ def process_file(file_names: list[str]) -> None:
     Print out the last several lines of the provided files.
 
     Note:
-        Number of lines to output is determined by _STDIN_TAIL_SIZE.
+        Number of lines to output is determined by _FILE_TAIL_SIZE.
 
     Parameters:
         file_names: file names referring to the files to process
