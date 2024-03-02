@@ -5,6 +5,13 @@ import sys
 
 
 def process_stdin() -> (int, int, int):
+    """
+    Count number of lines, words and bytes got from stdin until EOF.
+
+    Return:
+        Number of lines, words and bytes got from stdin.
+    """
+
     n_lines: int = 0
     n_words: int = 0
     n_bytes: int = 0
@@ -24,6 +31,13 @@ def process_stdin() -> (int, int, int):
 
 
 def process_file(file_names: list[str]) -> None:
+    """
+    Count number of lines, words and bytes in the provided files.
+
+    Parameters:
+        file_names: file names referring to the files to process
+    """
+
     total_lines: int = 0
     total_words: int = 0
     total_bytes: int = 0
