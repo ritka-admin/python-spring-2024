@@ -50,6 +50,37 @@ copper
 ```
 
 ```commandline
+$ python3 task_2.py resources/empty - task_2.py 
+==> resources/empty <==
+
+
+
+
+\n
+
+\t\n
+
+
+==> - <==
+kek
+lol
+kek
+lol
+==> task_2.py <==
+            process_stdin()
+        # SIGTERM handler
+        except KeyboardInterrupt:
+            pass
+    else:
+        try:
+            process_file(args)
+        except FileNotFoundError as not_file:
+            print(" ".join(["Could not open file:", not_file.filename]))
+
+
+```
+
+```commandline
 $ python3 task_2.py non_existing_file
 Could not open file: non_existing_file
 ```

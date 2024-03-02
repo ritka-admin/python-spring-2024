@@ -48,12 +48,16 @@ def process_file(file_names: list[str]) -> None:
         if len(file_names) > 1:
             print(" ".join(["==>", file_name, "<=="]))
 
+        if file_name == "-":
+            process_stdin()
+            continue
+
         with open(file_name, "r") as file:
             lines = file.readlines()
 
             if len(lines) < _FILE_TAIL_SIZE:
                 print("".join(lines))
-                return
+                continue
 
             print("".join(lines[len(lines)-_FILE_TAIL_SIZE+1:]))
 
@@ -61,7 +65,7 @@ def process_file(file_names: list[str]) -> None:
 if __name__ == "__main__":
     args = sys.argv[1:]
 
-    if len(args) == 0:
+    if len(args) == 0 or args[0] == "-":
         try:
             process_stdin()
         # SIGTERM handler

@@ -28,6 +28,10 @@ def process_file(file_names: list[str]) -> None:
 
     for file_name in file_names:
 
+        if file_name == "-":
+            process_stdin()
+            continue
+
         with open(file_name, "r") as file:
             lines: list[str] = file.readlines()
             nums: list[str] = ["".join(["\t", str(x)]) for x in range(1, len(lines) + 1)]
@@ -45,7 +49,7 @@ def process_file(file_names: list[str]) -> None:
 if __name__ == "__main__":
     args = sys.argv[1:]
 
-    if len(args) == 0:
+    if len(args) == 0 or args[0] == "-":
         try:
             process_stdin()
         # SIGTERM handler
