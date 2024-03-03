@@ -65,7 +65,7 @@ def process_file(file_names: list[str]) -> None:
 if __name__ == "__main__":
     args = sys.argv[1:]
 
-    if len(args) == 0 or args[0] == "-":
+    if len(args) == 0 or (args[0].strip() == "-" and len(args) == 1):
         try:
             process_stdin()
         # SIGTERM handler
