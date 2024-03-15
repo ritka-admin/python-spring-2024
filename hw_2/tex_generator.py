@@ -36,7 +36,3 @@ def generate_tex_table(table: list[list[Stringable]]) -> str:
 
     result += "\\end{document}"
     return result
-
-
-if __name__ == '__main__':
-    print(generate_tex_table([["lol", "kek"], ["lol", "kek", "azaza"]]))

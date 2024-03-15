@@ -7,3 +7,7 @@ Launch: `python3 task_N.py [ARGS]`
 - task_1: `nl -b a` realization
 - task_2: `tail` realization
 - task_3: `wc` realization
+
+### hw_2
+
+TODO
