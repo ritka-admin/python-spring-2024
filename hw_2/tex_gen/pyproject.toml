@@ -1,11 +1,14 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools >= 65", "wheel >= 0.38"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "tex_gen"
-version = "0.1"
+version = "0.2"
 description = "Python package for LaTeX table and images generation"
 dependencies = [
     "pdflatex==0.1.3"
 ]
+
+[tool.setuptools]
+py-modules = ["tex_gen"]
