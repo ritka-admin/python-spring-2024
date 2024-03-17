@@ -1,2 +1,0 @@
-pdflatex==0.1.3
-tex-generator==0.1
