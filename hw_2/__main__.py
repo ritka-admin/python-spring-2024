@@ -1,5 +1,5 @@
 from pdflatex import PDFLaTeX
-from tex_gen import generate_tex_doc, generate_tex_image, generate_tex_table    # TODO: add init
+from tex_gen import generate_tex_doc, generate_tex_image, generate_tex_table
 
 
 if __name__ == '__main__':
@@ -20,5 +20,8 @@ if __name__ == '__main__':
         file.write(generate_tex_doc(body, table_libs + image_libs))
 
     pdfl = PDFLaTeX.from_texfile("hw_2/artifacts/task_2.tex")
-    pdf, log, completed_process = pdfl.create_pdf(keep_pdf_file=True, keep_log_file=True)
+    pdf, log, completed_process = pdfl.create_pdf()
+
+    with open("hw_2/artifacts/task_2.pdf", 'wb') as file:
+        file.write(pdf)
 
