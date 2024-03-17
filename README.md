@@ -16,5 +16,5 @@ Launch: `python3 -m hw_2`
 - task_2: 
   - generation of LaTeX image from a given png
   - .tex to pdf conversion
-  - module upload to index (using setuptools)
+  - module upload to index (using setuptools) (module installation: `pip install -i https://test.pypi.org/simple/ tex-gen`)
 - task_3: TODO

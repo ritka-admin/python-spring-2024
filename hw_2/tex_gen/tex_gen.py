@@ -71,5 +71,5 @@ def generate_tex_image(image_path: str) -> (str, list[str]):
             2) libraries that it is dependent on.
     """
 
-    return f"$$\\includegraphics[width=5cm, height=4cm]{{{image_path}}}$$\n\n", ["graphicx"]
+    return f"$\\includegraphics[width=5cm, height=4cm]{{{image_path}}}$\n\n", ["graphicx"]
 
