@@ -10,11 +10,13 @@ Launch: `python3 task_N.py [ARGS]`
 
 ### hw_2
 
+Install requirements: `pip install -r hw_2/requirements.txt`
+
 Launch: `python3 -m hw_2`
 
 - task_1: generation of valid LaTeX table from python list of lists
 - task_2: 
   - generation of LaTeX image from a given png
   - .tex to pdf conversion
-  - module upload to index (using setuptools) (module installation: `pip install -i https://test.pypi.org/simple/ tex-gen`)
+  - module upload to index (using setuptools) (ref: https://test.pypi.org/project/tex-gen/)
 - task_3: TODO

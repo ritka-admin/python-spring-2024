@@ -4,11 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tex_gen"
-version = "0.3"
+version = "0.4"
 description = "Python package for LaTeX table and images generation"
-dependencies = [
-    "pdflatex"
-]
 
 [tool.setuptools]
 py-modules = ["tex_gen"]
