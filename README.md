@@ -26,6 +26,5 @@ Launch: `python3 -m hw_2`
     docker run --rm \
     --mount type=bind,source="$(pwd)"/hw_2/dockerfile_artifact,target=/data/dockerfile_artifacts \
     tex_gen \
-    -output-directory dockerfile_artifacts artifacts/task_2.tex
-
+    -output-directory dockerfile_artifacts  hw_2/artifacts/task_2.tex
     ```
