@@ -19,4 +19,13 @@ Launch: `python3 -m hw_2`
   - generation of LaTeX image from a given png
   - .tex to pdf conversion
   - module upload to index (using setuptools) (ref: https://test.pypi.org/project/tex-gen/)
-- task_3: TODO
+- task_3: introduction of Dockerfile for pdf from tex generation
+  - build: `docker build --tag tex_gen hw_2/`
+  - run:
+    ```commandline
+    docker run --rm \
+    --mount type=bind,source="$(pwd)"/hw_2/dockerfile_artifact,target=/data/dockerfile_artifacts \
+    tex_gen \
+    -output-directory dockerfile_artifacts artifacts/task_2.tex
+
+    ```
