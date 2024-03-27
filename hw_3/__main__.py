@@ -3,10 +3,31 @@ from matrix import Matrix
 
 
 if __name__ == "__main__":
-    # TODO: numpy generate
-    m1: Matrix = Matrix([1, 2, 3, 4, 5, 6], 2)
-    m2: Matrix = Matrix([7, 8, 9, 10, 11, 12], 2)
-    m2: Matrix = Matrix([1, 2, 3, 4, 5, 6], 3)
+    np.random.seed(0)
+    rows: int = 10
+    matrix1_np = np.random.randint(0, 10, (rows, rows))
+    matrix2_np = np.random.randint(0, 10, (rows, rows))
+    matrix3_np = np.random.randint(0, 10, (rows, rows))
 
-    with open("hw_3/artifacts/3.1/matrix+.txt", "w") as file:
+    m1 = Matrix(list(matrix1_np.flatten()), rows)
+    m2 = Matrix(list(matrix2_np.flatten()), rows)
+    m3 = Matrix(list(matrix3_np.flatten()), rows)
+
+    with open("./artifacts/3.1/matrix+.txt", "w") as file:
         result: Matrix = m1 + m2
+        printable: str = "\n".join(
+            ["lhs", m1.convert_to_printable(), "rhs", m2.convert_to_printable(), "res", result.convert_to_printable()])
+        file.write(printable)
+
+    with open("./artifacts/3.1/matrix_mul.txt", "w") as file:
+        result: Matrix = m2 * m3
+        printable: str = "\n".join(
+            ["lhs", m2.convert_to_printable(), "rhs", m3.convert_to_printable(), "res", result.convert_to_printable()])
+        file.write(printable)
+
+    with open("./artifacts/3.1/matrix@.txt", "w") as file:
+        result: Matrix = m1 @ m3
+        printable: str = "\n".join(
+            ["lhs", m1.convert_to_printable(), "rhs", m3.convert_to_printable(), "res", result.convert_to_printable()])
+        file.write(printable)
+
