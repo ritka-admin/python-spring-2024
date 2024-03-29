@@ -28,3 +28,11 @@ Launch: `python3 -m hw_2`
     tex_gen \
     -output-directory dockerfile_artifacts  hw_2/artifacts/task_2.tex
     ```
+    
+### hw_3
+
+Launch: `python3 -m hw_3`
+
+- task_1: Matrix realization, `+`, `*`, `@` operator overloading
+- task_2: Matrix realization via Numpy / self-made mixins
+- task_3: Matrix `hash` realization + search for collision

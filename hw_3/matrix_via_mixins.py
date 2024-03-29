@@ -17,12 +17,6 @@ class MatrixHelperMixin:
             result.append(reduced)
         return "\n".join(result)
 
-    # def __eq__(self, other: "MatrixViaMixins"):
-    #     if len(self._m) != len(other._m):
-    #         return False
-    #
-    #     return all([self._m[i] == other._m[i] for i in range(len(self._m))])
-
     def __hash__(self):
         # connect all numbers in a string, convert to int and take prime modulo
         return int(re.sub(r"\s+", "", str(self))) % 189733
