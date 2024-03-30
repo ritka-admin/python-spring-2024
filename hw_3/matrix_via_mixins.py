@@ -1,5 +1,7 @@
 import re
 from functools import reduce
+
+from numpy.core.umath import matmul
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
 
@@ -9,6 +11,7 @@ class MatrixHelperMixin:
             raise ValueError("All rows in a matrix must be of the same size")
 
         self._m = m
+        self._mult_cache = dict()
 
     def __str__(self):
         result: list[str] = []
@@ -49,7 +52,14 @@ class MatrixViaMixins(MatrixHelperMixin, NDArrayOperatorsMixin):
         if len(inputs) != 2 or getattr(inputs[0], "_m") is None or getattr(inputs[1], "_m") is None:
             raise ValueError("Two MixinMatrices are expected as arguments")
 
-        arr1 = inputs[0].matrix
-        arr2 = inputs[1].matrix
+        arr2_hash: int = hash(inputs[1])
 
-        return MatrixViaMixins(list(ufunc(arr1, arr2, **kwargs)))
+        if ufunc is matmul and self._mult_cache.keys().__contains__(arr2_hash):
+            return self._mult_cache[arr2_hash]
+
+        arr1: MatrixViaMixins = inputs[0].matrix
+        arr2: MatrixViaMixins = inputs[1].matrix
+
+        result: MatrixViaMixins = MatrixViaMixins(list(ufunc(arr1, arr2, **kwargs)))
+        self._mult_cache[arr2_hash] = result
+        return result
